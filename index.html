@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deepika Keswarap — Analytics & AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0f0f0f;
+      --paper: #f7f4ef;
+      --accent: #2d5a3d;
+      --accent-light: #e8f0eb;
+      --muted: #6b6b6b;
+      --border: #e0dbd3;
+      --card-bg: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 4rem;
+      background: rgba(247, 244, 239, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 8rem 4rem 4rem;
+      gap: 4rem;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 45%;
+      height: 100%;
+      background: var(--accent-light);
+      z-index: 0;
+    }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+      color: var(--ink);
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      padding: 0.875rem 1.75rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: all 0.2s;
+      border: 2px solid var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--accent);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--ink);
+      text-decoration: none;
+      padding: 0.875rem 1.75rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      border: 2px solid var(--border);
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--ink);
+    }
+
+    .hero-visual {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .stat-card:nth-child(1) { animation-delay: 0.1s; margin-left: 0; }
+    .stat-card:nth-child(2) { animation-delay: 0.2s; margin-left: 2rem; }
+    .stat-card:nth-child(3) { animation-delay: 0.3s; margin-left: 1rem; }
+
+    .stat-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.5rem;
+      color: var(--accent);
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 6rem 4rem;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 1.5rem;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 560px;
+      font-weight: 300;
+      margin-bottom: 3.5rem;
+    }
+
+    /* PROJECTS */
+    #projects { background: var(--ink); color: white; }
+    #projects .section-label { color: #7ab88a; }
+    #projects .section-label::before { background: #7ab88a; }
+    #projects .section-title { color: white; }
+    #projects .section-subtitle { color: #9a9a9a; }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+
+    .project-card:hover { border-color: #3a3a3a; transform: translateY(-4px); }
+    .project-card:hover::before { transform: scaleX(1); }
+
+    .project-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #7ab88a;
+      background: rgba(122, 184, 138, 0.1);
+      padding: 0.3rem 0.75rem;
+      width: fit-content;
+    }
+
+    .project-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      color: white;
+      letter-spacing: -0.02em;
+    }
+
+    .project-desc {
+      font-size: 0.9rem;
+      color: #9a9a9a;
+      line-height: 1.7;
+      font-weight: 300;
+      flex: 1;
+    }
+
+    .project-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+    }
+
+    .stack-pill {
+      font-size: 0.7rem;
+      color: #6b6b6b;
+      background: #222;
+      padding: 0.25rem 0.6rem;
+      border: 1px solid #333;
+      letter-spacing: 0.05em;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #7ab88a;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      margin-top: 0.5rem;
+      transition: gap 0.2s;
+    }
+
+    .project-link:hover { gap: 0.75rem; }
+
+    .project-link-disabled {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #444;
+      letter-spacing: 0.05em;
+      margin-top: 0.5rem;
+      cursor: default;
+    }
+
+    /* EXPERTISE */
+    #expertise { background: var(--paper); }
+
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .expertise-item {
+      background: var(--paper);
+      padding: 2.5rem;
+      transition: background 0.2s;
+    }
+
+    .expertise-item:hover { background: var(--accent-light); }
+
+    .expertise-icon {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .expertise-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+    }
+
+    .expertise-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ABOUT */
+    #about {
+      background: var(--accent);
+      color: white;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    #about .section-label { color: #a8d4b4; }
+    #about .section-label::before { background: #a8d4b4; }
+    #about .section-title { color: white; }
+
+    .about-text {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.8;
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .about-metric {
+      border-top: 1px solid rgba(255,255,255,0.2);
+      padding-top: 1.25rem;
+    }
+
+    .about-metric-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      color: white;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .about-metric-label {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.6);
+      font-weight: 300;
+    }
+
+    /* CONTACT */
+    #contact { background: var(--paper); text-align: center; }
+
+    .contact-inner {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-email {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      display: block;
+      margin: 2rem 0;
+      transition: opacity 0.2s;
+    }
+
+    .contact-email:hover { opacity: 0.7; }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .contact-links a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-links a:hover { color: var(--accent); }
+
+    /* FOOTER */
+    footer {
+      padding: 1.5rem 4rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 2rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 6rem 2rem 3rem; }
+      .hero::before { display: none; }
+      section { padding: 4rem 2rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .expertise-grid { grid-template-columns: 1fr; }
+      #about { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 2rem; }
+      footer { padding: 1.5rem 2rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">Deepika Keswarap</a>
+    <ul class="nav-links">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Analytics & AI</div>
+      <h1>Data that drives<br/><em>decisions.</em></h1>
+      <p class="hero-desc">Senior analytics professional with 8+ years building BI functions, subscription analytics systems, and AI-powered tools for high-growth US companies — remotely from Ireland.</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn-primary">View Projects →</a>
+        <a href="https://www.linkedin.com/in/deepika-keswarap/" target="_blank" class="btn-secondary">LinkedIn ↗</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="stat-card">
+        <span class="stat-number">8+</span>
+        <span class="stat-label">years in analytics across DTC, SaaS & health tech</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">3×</span>
+        <span class="stat-label">BI adoption increase through self-service enablement</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">0→1</span>
+        <span class="stat-label">BI functions built from scratch at two US startups</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-label">Selected Work</div>
+    <h2 class="section-title">Projects</h2>
+    <p class="section-subtitle">From consumer AI products to data-driven sales intelligence — built end to end.</p>
+
+    <div class="projects-grid">
+
+      <!-- Nestling -->
+      <div class="project-card fade-up">
+        <span class="project-tag">⚡ Live Product</span>
+        <h3 class="project-title">AskNestling</h3>
+        <p class="project-desc">A deployed AI chat app providing calm, evidence-based guidance for parents of infants and toddlers up to 24 months. Covers sleep, feeding, digestion, milestones, and safety. Built end to end — from product concept to deployment.</p>
+        <div class="project-stack">
+          <span class="stack-pill">React</span>
+          <span class="stack-pill">Claude API</span>
+          <span class="stack-pill">Vercel</span>
+          <span class="stack-pill">Prompt Engineering</span>
+        </div>
+        <a href="https://asknestling.vercel.app/app/chatbot" target="_blank" class="project-link">Live App →</a>
+      </div>
+
+      <!-- Tive -->
+      <div class="project-card fade-up" style="animation-delay:0.1s">
+        <span class="project-tag">📊 Case Study</span>
+        <h3 class="project-title">Tive Sales Intelligence</h3>
+        <p class="project-desc">End-to-end sales performance analysis on a real dataset — from initial exploration in Excel through executive PowerPoint delivery, to AI-assisted dashboards built in both Databricks Genie and Claude Code. Dual dashboards built in under an hour each.</p>
+        <div class="project-stack">
+          <span class="stack-pill">Databricks</span>
+          <span class="stack-pill">Claude Code</span>
+          <span class="stack-pill">Excel</span>
+          <span class="stack-pill">PowerPoint</span>
+          <span class="stack-pill">SQL</span>
+        </div>
+        <span class="project-link-disabled">Demo available on request</span>
+      </div>
+
+      <!-- Job Scout -->
+      <div class="project-card fade-up" style="animation-delay:0.2s">
+        <span class="project-tag">🤖 Automation</span>
+        <h3 class="project-title">Job Scout Automation</h3>
+        <p class="project-desc">Python automation that monitors dbt Slack channels, filters relevant analytics job postings by criteria, and delivers a structured daily digest via email. Deployed on GitHub Actions — runs on a schedule with zero manual effort.</p>
+        <div class="project-stack">
+          <span class="stack-pill">Python</span>
+          <span class="stack-pill">GitHub Actions</span>
+          <span class="stack-pill">Resend API</span>
+          <span class="stack-pill">Slack API</span>
+        </div>
+        <span class="project-link-disabled">Private repo</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERTISE -->
+  <section id="expertise">
+    <div class="section-label">What I Do</div>
+    <h2 class="section-title">Expertise</h2>
+    <p class="section-subtitle">From raw data to deployed products — across the full analytics stack.</p>
+
+    <div class="expertise-grid">
+      <div class="expertise-item fade-up">
+        <div class="expertise-icon">📈</div>
+        <h3 class="expertise-title">Subscription & Lifecycle Analytics</h3>
+        <p class="expertise-desc">LTV, churn, RFM, and cohort modeling for DTC and SaaS businesses. Built acquisition-to-retention frameworks that directly shaped budget allocation and product decisions at Because Market and Modsy.</p>
+      </div>
+      <div class="expertise-item fade-up">
+        <div class="expertise-icon">🏗</div>
+        <h3 class="expertise-title">BI Function Building (0→1)</h3>
+        <p class="expertise-desc">Architected complete BI stacks from scratch at two US startups — dbt, Snowflake, Redshift, Looker, Fivetran. From raw pipelines to executive dashboards and self-service enablement.</p>
+      </div>
+      <div class="expertise-item fade-up">
+        <div class="expertise-icon">🧪</div>
+        <h3 class="expertise-title">Experimentation & Attribution</h3>
+        <p class="expertise-desc">A/B testing infrastructure, multi-touch attribution models, and event taxonomy design using Segment and Mixpanel. Improved ROI measurement accuracy by 25% at Modsy through redesigned attribution logic.</p>
+      </div>
+      <div class="expertise-item fade-up">
+        <div class="expertise-icon">🤖</div>
+        <h3 class="expertise-title">AI-Assisted Analytics</h3>
+        <p class="expertise-desc">Building AI-powered tools on top of analytics workflows — from consumer apps (AskNestling) to AI-generated insight dashboards using Claude Code and Databricks Genie. Certified in Databricks Generative AI.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div>
+      <div class="section-label">Background</div>
+      <h2 class="section-title">About Me</h2>
+      <p class="about-text">I'm a senior analytics professional based in Limerick, Ireland, specializing in subscription and DTC analytics for US-based companies. I've spent 8+ years building the data infrastructure, insight products, and now AI tools that help fast-growing companies make better decisions.</p>
+      <p class="about-text">Most recently I built the BI function from scratch at Because Market, a US subscription CPG brand, covering everything from dbt pipelines to board-level dashboards. Before that I did the same at Modsy, an ecommerce platform, and Big Health, a digital health SaaS.</p>
+      <a href="mailto:deepika.keswarap@gmail.com" class="btn-secondary" style="border-color: rgba(255,255,255,0.3); color: white; width: fit-content; margin-top: 1rem;">Get in touch →</a>
+    </div>
+    <div>
+      <div class="about-metrics">
+        <div class="about-metric">
+          <div class="about-metric-number">40%</div>
+          <div class="about-metric-label">Reduction in redundant ETL jobs through centralized dbt modeling</div>
+        </div>
+        <div class="about-metric">
+          <div class="about-metric-number">3×</div>
+          <div class="about-metric-label">BI adoption increase through self-service enablement</div>
+        </div>
+        <div class="about-metric">
+          <div class="about-metric-number">25%</div>
+          <div class="about-metric-label">Improvement in ROI measurement accuracy via attribution redesign</div>
+        </div>
+        <div class="about-metric">
+          <div class="about-metric-number">40%</div>
+          <div class="about-metric-label">Reduction in ad-hoc reporting requests through self-service dashboards</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner">
+      <div class="section-label" style="justify-content: center;">Get In Touch</div>
+      <h2 class="section-title">Let's work together</h2>
+      <p class="section-subtitle" style="margin: 0 auto 1rem;">Available for remote analytics consulting engagements with US-based companies.</p>
+      <a href="mailto:deepika.keswarap@gmail.com" class="contact-email">deepika.keswarap@gmail.com</a>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/deepika-keswarap/" target="_blank">LinkedIn ↗</a>
+        <a href="https://asknestling.vercel.app/app/chatbot" target="_blank">AskNestling ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2026 Deepika Keswarap</span>
+    <span>Limerick, Ireland · Available for remote work globally</span>
+  </footer>
+
+  <script>
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
