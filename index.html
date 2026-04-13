@@ -9,21 +9,25 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --ink: #0f0f0f;
-      --paper: #f7f4ef;
-      --accent: #2d5a3d;
-      --accent-light: #e8f0eb;
-      --muted: #6b6b6b;
-      --border: #e0dbd3;
-      --card-bg: #ffffff;
+      --navy:        #0d1f3c;
+      --navy-mid:    #162e54;
+      --slate:       #2c4a72;
+      --coral:       #e8613a;
+      --coral-light: #fceae4;
+      --white:       #ffffff;
+      --off-white:   #f4f6f9;
+      --muted:       #6a7f99;
+      --border:      #d0dae6;
+      --card-bg:     #ffffff;
+      --text-body:   #1e2d42;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
       font-family: 'DM Sans', sans-serif;
-      background: var(--paper);
-      color: var(--ink);
+      background: var(--off-white);
+      color: var(--text-body);
       font-size: 16px;
       line-height: 1.6;
       overflow-x: hidden;
@@ -38,15 +42,14 @@
       justify-content: space-between;
       align-items: center;
       padding: 1.25rem 4rem;
-      background: rgba(247, 244, 239, 0.92);
+      background: rgba(13, 31, 60, 0.97);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
     }
 
     .nav-logo {
       font-family: 'DM Serif Display', serif;
       font-size: 1.1rem;
-      color: var(--ink);
+      color: var(--white);
       text-decoration: none;
       letter-spacing: -0.02em;
     }
@@ -59,7 +62,7 @@
 
     .nav-links a {
       text-decoration: none;
-      color: var(--muted);
+      color: rgba(255,255,255,0.55);
       font-size: 0.875rem;
       font-weight: 500;
       letter-spacing: 0.04em;
@@ -67,7 +70,7 @@
       transition: color 0.2s;
     }
 
-    .nav-links a:hover { color: var(--accent); }
+    .nav-links a:hover { color: var(--coral); }
 
     /* HERO */
     .hero {
@@ -78,15 +81,16 @@
       padding: 8rem 4rem 4rem;
       gap: 4rem;
       position: relative;
+      background: var(--navy);
     }
 
     .hero::before {
       content: '';
       position: absolute;
       top: 0; right: 0;
-      width: 45%;
+      width: 42%;
       height: 100%;
-      background: var(--accent-light);
+      background: var(--navy-mid);
       z-index: 0;
     }
 
@@ -97,7 +101,7 @@
       font-weight: 500;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--coral);
       margin-bottom: 1.5rem;
       display: flex;
       align-items: center;
@@ -109,7 +113,7 @@
       display: block;
       width: 2rem;
       height: 1px;
-      background: var(--accent);
+      background: var(--coral);
     }
 
     .hero h1 {
@@ -118,17 +122,17 @@
       line-height: 1.05;
       letter-spacing: -0.03em;
       margin-bottom: 1.5rem;
-      color: var(--ink);
+      color: var(--white);
     }
 
     .hero h1 em {
       font-style: italic;
-      color: var(--accent);
+      color: var(--coral);
     }
 
     .hero-desc {
       font-size: 1.1rem;
-      color: var(--muted);
+      color: rgba(255,255,255,0.6);
       max-width: 480px;
       margin-bottom: 2.5rem;
       font-weight: 300;
@@ -145,7 +149,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: var(--accent);
+      background: var(--coral);
       color: white;
       text-decoration: none;
       padding: 0.875rem 1.75rem;
@@ -153,12 +157,12 @@
       font-weight: 500;
       letter-spacing: 0.02em;
       transition: all 0.2s;
-      border: 2px solid var(--accent);
+      border: 2px solid var(--coral);
     }
 
     .btn-primary:hover {
       background: transparent;
-      color: var(--accent);
+      color: var(--coral);
     }
 
     .btn-secondary {
@@ -166,18 +170,19 @@
       align-items: center;
       gap: 0.5rem;
       background: transparent;
-      color: var(--ink);
+      color: rgba(255,255,255,0.75);
       text-decoration: none;
       padding: 0.875rem 1.75rem;
       font-size: 0.875rem;
       font-weight: 500;
       letter-spacing: 0.02em;
-      border: 2px solid var(--border);
+      border: 2px solid rgba(255,255,255,0.25);
       transition: all 0.2s;
     }
 
     .btn-secondary:hover {
-      border-color: var(--ink);
+      border-color: rgba(255,255,255,0.6);
+      color: white;
     }
 
     .hero-visual {
@@ -189,8 +194,8 @@
     }
 
     .stat-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
       padding: 1.5rem 2rem;
       display: flex;
       align-items: baseline;
@@ -205,14 +210,14 @@
     .stat-number {
       font-family: 'DM Serif Display', serif;
       font-size: 2.5rem;
-      color: var(--accent);
+      color: var(--coral);
       letter-spacing: -0.03em;
       line-height: 1;
     }
 
     .stat-label {
       font-size: 0.875rem;
-      color: var(--muted);
+      color: rgba(255,255,255,0.55);
       font-weight: 300;
     }
 
@@ -226,7 +231,7 @@
       font-weight: 500;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--coral);
       margin-bottom: 0.75rem;
       display: flex;
       align-items: center;
@@ -238,7 +243,7 @@
       display: block;
       width: 1.5rem;
       height: 1px;
-      background: var(--accent);
+      background: var(--coral);
     }
 
     .section-title {
@@ -258,11 +263,9 @@
     }
 
     /* PROJECTS */
-    #projects { background: var(--ink); color: white; }
-    #projects .section-label { color: #7ab88a; }
-    #projects .section-label::before { background: #7ab88a; }
+    #projects { background: var(--navy); color: white; }
     #projects .section-title { color: white; }
-    #projects .section-subtitle { color: #9a9a9a; }
+    #projects .section-subtitle { color: rgba(255,255,255,0.45); }
 
     .projects-grid {
       display: grid;
@@ -271,8 +274,8 @@
     }
 
     .project-card {
-      background: #1a1a1a;
-      border: 1px solid #2a2a2a;
+      background: var(--navy-mid);
+      border: 1px solid rgba(255,255,255,0.08);
       padding: 2rem;
       display: flex;
       flex-direction: column;
@@ -287,13 +290,13 @@
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 2px;
-      background: var(--accent);
+      background: var(--coral);
       transform: scaleX(0);
       transform-origin: left;
       transition: transform 0.3s;
     }
 
-    .project-card:hover { border-color: #3a3a3a; transform: translateY(-4px); }
+    .project-card:hover { border-color: rgba(255,255,255,0.18); transform: translateY(-4px); }
     .project-card:hover::before { transform: scaleX(1); }
 
     .project-tag {
@@ -304,8 +307,8 @@
       font-weight: 500;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #7ab88a;
-      background: rgba(122, 184, 138, 0.1);
+      color: var(--coral);
+      background: rgba(232, 97, 58, 0.12);
       padding: 0.3rem 0.75rem;
       width: fit-content;
     }
@@ -319,7 +322,7 @@
 
     .project-desc {
       font-size: 0.9rem;
-      color: #9a9a9a;
+      color: rgba(255,255,255,0.55);
       line-height: 1.7;
       font-weight: 300;
       flex: 1;
@@ -334,10 +337,10 @@
 
     .stack-pill {
       font-size: 0.7rem;
-      color: #6b6b6b;
-      background: #222;
+      color: rgba(255,255,255,0.45);
+      background: rgba(255,255,255,0.05);
       padding: 0.25rem 0.6rem;
-      border: 1px solid #333;
+      border: 1px solid rgba(255,255,255,0.1);
       letter-spacing: 0.05em;
     }
 
@@ -347,7 +350,7 @@
       gap: 0.5rem;
       font-size: 0.8rem;
       font-weight: 500;
-      color: #7ab88a;
+      color: var(--coral);
       text-decoration: none;
       letter-spacing: 0.05em;
       margin-top: 0.5rem;
@@ -362,14 +365,14 @@
       gap: 0.5rem;
       font-size: 0.8rem;
       font-weight: 500;
-      color: #444;
+      color: rgba(255,255,255,0.2);
       letter-spacing: 0.05em;
       margin-top: 0.5rem;
       cursor: default;
     }
 
     /* EXPERTISE */
-    #expertise { background: var(--paper); }
+    #expertise { background: var(--off-white); }
 
     .expertise-grid {
       display: grid;
@@ -380,12 +383,12 @@
     }
 
     .expertise-item {
-      background: var(--paper);
+      background: var(--off-white);
       padding: 2.5rem;
       transition: background 0.2s;
     }
 
-    .expertise-item:hover { background: var(--accent-light); }
+    .expertise-item:hover { background: var(--coral-light); }
 
     .expertise-icon {
       font-size: 1.5rem;
@@ -397,6 +400,7 @@
       font-size: 1.25rem;
       margin-bottom: 0.75rem;
       letter-spacing: -0.01em;
+      color: var(--navy);
     }
 
     .expertise-desc {
@@ -408,7 +412,7 @@
 
     /* ABOUT */
     #about {
-      background: var(--accent);
+      background: var(--navy);
       color: white;
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -416,13 +420,13 @@
       align-items: center;
     }
 
-    #about .section-label { color: #a8d4b4; }
-    #about .section-label::before { background: #a8d4b4; }
+    #about .section-label { color: var(--coral); }
+    #about .section-label::before { background: var(--coral); }
     #about .section-title { color: white; }
 
     .about-text {
       font-size: 1rem;
-      color: rgba(255,255,255,0.8);
+      color: rgba(255,255,255,0.65);
       line-height: 1.8;
       font-weight: 300;
       margin-bottom: 1.5rem;
@@ -435,14 +439,14 @@
     }
 
     .about-metric {
-      border-top: 1px solid rgba(255,255,255,0.2);
+      border-top: 1px solid rgba(255,255,255,0.15);
       padding-top: 1.25rem;
     }
 
     .about-metric-number {
       font-family: 'DM Serif Display', serif;
       font-size: 2rem;
-      color: white;
+      color: var(--coral);
       letter-spacing: -0.03em;
       line-height: 1;
       margin-bottom: 0.25rem;
@@ -450,22 +454,41 @@
 
     .about-metric-label {
       font-size: 0.8rem;
-      color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.45);
       font-weight: 300;
     }
 
-    /* CONTACT */
-    #contact { background: var(--paper); text-align: center; }
-
-    .contact-inner {
-      max-width: 600px;
-      margin: 0 auto;
+    .about-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      padding: 0.875rem 1.75rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      border: 2px solid rgba(255,255,255,0.25);
+      transition: all 0.2s;
+      margin-top: 1rem;
+      width: fit-content;
     }
+
+    .about-btn:hover {
+      border-color: var(--coral);
+      color: var(--coral);
+    }
+
+    /* CONTACT */
+    #contact { background: var(--off-white); text-align: center; }
+
+    .contact-inner { max-width: 600px; margin: 0 auto; }
 
     .contact-email {
       font-family: 'DM Serif Display', serif;
       font-size: clamp(1.5rem, 3vw, 2.5rem);
-      color: var(--accent);
+      color: var(--coral);
       text-decoration: none;
       letter-spacing: -0.02em;
       display: block;
@@ -492,17 +515,17 @@
       transition: color 0.2s;
     }
 
-    .contact-links a:hover { color: var(--accent); }
+    .contact-links a:hover { color: var(--coral); }
 
     /* FOOTER */
     footer {
       padding: 1.5rem 4rem;
-      border-top: 1px solid var(--border);
+      background: var(--navy);
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 0.75rem;
-      color: var(--muted);
+      color: rgba(255,255,255,0.3);
     }
 
     /* ANIMATIONS */
@@ -517,10 +540,7 @@
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
 
     /* RESPONSIVE */
     @media (max-width: 900px) {
@@ -538,7 +558,6 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <a class="nav-logo" href="#">Deepika Keswarap</a>
     <ul class="nav-links">
@@ -549,7 +568,6 @@
     </ul>
   </nav>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
       <div class="hero-eyebrow">Analytics & AI</div>
@@ -576,15 +594,11 @@
     </div>
   </section>
 
-  <!-- PROJECTS -->
   <section id="projects">
     <div class="section-label">Selected Work</div>
     <h2 class="section-title">Projects</h2>
     <p class="section-subtitle">From consumer AI products to data-driven sales intelligence — built end to end.</p>
-
     <div class="projects-grid">
-
-      <!-- Nestling -->
       <div class="project-card fade-up">
         <span class="project-tag">⚡ Live Product</span>
         <h3 class="project-title">AskNestling</h3>
@@ -597,8 +611,6 @@
         </div>
         <a href="https://asknestling.vercel.app/app/chatbot" target="_blank" class="project-link">Live App →</a>
       </div>
-
-      <!-- Tive -->
       <div class="project-card fade-up" style="animation-delay:0.1s">
         <span class="project-tag">📊 Case Study</span>
         <h3 class="project-title">Tive Sales Intelligence</h3>
@@ -612,8 +624,6 @@
         </div>
         <span class="project-link-disabled">Demo available on request</span>
       </div>
-
-      <!-- Job Scout -->
       <div class="project-card fade-up" style="animation-delay:0.2s">
         <span class="project-tag">🤖 Automation</span>
         <h3 class="project-title">Job Scout Automation</h3>
@@ -626,16 +636,13 @@
         </div>
         <span class="project-link-disabled">Private repo</span>
       </div>
-
     </div>
   </section>
 
-  <!-- EXPERTISE -->
   <section id="expertise">
     <div class="section-label">What I Do</div>
     <h2 class="section-title">Expertise</h2>
     <p class="section-subtitle">From raw data to deployed products — across the full analytics stack.</p>
-
     <div class="expertise-grid">
       <div class="expertise-item fade-up">
         <div class="expertise-icon">📈</div>
@@ -660,14 +667,13 @@
     </div>
   </section>
 
-  <!-- ABOUT -->
   <section id="about">
     <div>
       <div class="section-label">Background</div>
       <h2 class="section-title">About Me</h2>
       <p class="about-text">I'm a senior analytics professional based in Limerick, Ireland, specializing in subscription and DTC analytics for US-based companies. I've spent 8+ years building the data infrastructure, insight products, and now AI tools that help fast-growing companies make better decisions.</p>
       <p class="about-text">Most recently I built the BI function from scratch at Because Market, a US subscription CPG brand, covering everything from dbt pipelines to board-level dashboards. Before that I did the same at Modsy, an ecommerce platform, and Big Health, a digital health SaaS.</p>
-      <a href="mailto:deepika.keswarap@gmail.com" class="btn-secondary" style="border-color: rgba(255,255,255,0.3); color: white; width: fit-content; margin-top: 1rem;">Get in touch →</a>
+      <a href="mailto:deepika.keswarap@gmail.com" class="about-btn">Get in touch →</a>
     </div>
     <div>
       <div class="about-metrics">
@@ -691,12 +697,11 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section id="contact">
     <div class="contact-inner">
       <div class="section-label" style="justify-content: center;">Get In Touch</div>
       <h2 class="section-title">Let's work together</h2>
-      <p class="section-subtitle" style="margin: 0 auto 1rem;">Available for remote analytics consulting engagements for companies anywhere.</p>
+      <p class="section-subtitle" style="margin: 0 auto 1rem;">Available for remote analytics engagements for companies anywhere.</p>
       <a href="mailto:deepika.keswarap@gmail.com" class="contact-email">deepika.keswarap@gmail.com</a>
       <div class="contact-links">
         <a href="https://www.linkedin.com/in/deepika-keswarap/" target="_blank">LinkedIn ↗</a>
@@ -705,22 +710,17 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <span>© 2026 Deepika Keswarap</span>
-    <span>Limerick, Ireland. Available for remote work globally</span>
+    <span>Limerick, Ireland · Available for remote work globally</span>
   </footer>
 
   <script>
-    // Scroll animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.1 });
-
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
   </script>
 
